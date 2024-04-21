@@ -32,7 +32,8 @@ addGlobalStyle('span_0 { color: black; background-color: #eee; padding-left:0.25
 							span_4 { color: black; background-color: #EFE7DA; padding-left:0.25em;} \
 							span_5 { color: white; background-color: #A1BEB4; padding-left:0.25em;} \
 							span_6 { color: white; background-color: #276A73; padding-left:0.25em;} \
-							span_7 { color: white; background-color: #041625; padding-left:0.25em;}');
+							span_7 { color: white; background-color: #113773; padding-left:0.25em;} \
+							span_8 { color: white; background-color: #041625; padding-left:0.25em;}');
 
 // https://tartarus.org/martin/PorterStemmer/ 波特词干算法
 var lemmatizer = (function () {
@@ -298,10 +299,10 @@ var checkFrequency = function (selectedS) {
 	} else if (inWordsResult <= 5000) {
 		return (4);
 	} else if (inWordsResult <= 9000) {
-		return (5); // 5000-9000是5 9000-15000是6 
+		return (5); // 5000-9000是5 9000-15000是6 15000-20000是7
 	} else if (inWordsResult <= 15000) {
 		return (6);
-	} else if (inWordsResult <= 47000) {
+	} else if (inWordsResult <= 20000) {
 		return (7);
 	} else if (inWordsResult <= 47000) {
 		return (8);
@@ -319,7 +320,8 @@ var convertNumberTitle = function (checkFrequency) {
 		4: "",
 		5: "5000-9000",
 		6: "9000-15000",
-		7: "15000-"
+		7: "15000-20000",
+		8: "20000-",
 	};
 	// debugger
 	return ' title="' + map[checkFrequency] + '"';
