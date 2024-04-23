@@ -287,7 +287,7 @@ var addSpan = function (selected, selectedS, spanType, isParagraph) {
 
 var checkFrequency = function (selectedS) {
 	var inWordsResult = inWords(selectedS);
-	console.log('词频', inWordsResult);
+	console.log(selectedS, '词频', inWordsResult);
 	if (inWordsResult == -1) {
 		return (0);
 	} else if (inWordsResult <= 100) {
