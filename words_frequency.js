@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         词频统计
 // @namespace    https://quoth.win/word_freq
-// @version      1.3
+// @version      1.4
 // @description  利用COCA一万五词频表分析网页文单词词频，建议手动替换为五万词库。
 // @author       Reynard
 // @include      *://*
@@ -233,7 +233,7 @@ var inWords = function (word) {
 
 	var wordIndexL = words.indexOf(lemmatizer(word));
 	var wordIndex = words.indexOf(word);
-	debugger
+	// debugger
 	if (wordIndex >= 0) {
 			return (wordIndex);
 	} else if (wordIndexL >= 0) {
@@ -263,15 +263,16 @@ var addSpan = function (selected, selectedS, spanType, isParagraph) {
 							for (i in wordInLines) {
 									wordInLinesFrequency = checkFrequency(wordInLines[i])
 									if (j == 0) {
-											newTextContent = newTextContent + "<span_" + wordInLinesFrequency + convertNumberTitle(wordInLinesFrequency) + "> " + wordInLines[i] + " </span_" + wordInLinesFrequency + "><br/><br/>";
+											newTextContent = newTextContent + "<span_" + wordInLinesFrequency + inWords(wordInLines[i]) + "> " + wordInLines[i] + " </span_" + wordInLinesFrequency + "><br/><br/>";
 									} else {
-											newTextContent = newTextContent + "<span_" + wordInLinesFrequency + convertNumberTitle(wordInLinesFrequency) + "> " + wordInLines[i] + " </span_" + wordInLinesFrequency + ">";
+											newTextContent = newTextContent + "<span_" + wordInLinesFrequency + inWords(wordInLines[i]) + "> " + wordInLines[i] + " </span_" + wordInLinesFrequency + ">";
 									}
 									j = 1;
 							}
 					} else {
+						debugger
 							var selectedSResult = checkFrequency(selectedS[i])
-							newTextContent = newTextContent + "<span_" + selectedSResult + convertNumberTitle(selectedSResult) + "> " + selectedS[i] + " </span_" + selectedSResult + ">";
+							newTextContent = newTextContent + "<span_" + selectedSResult + inWords(selectedS[i]) + "> " + selectedS[i] + " </span_" + selectedSResult + ">";
 					}
 			}
 
